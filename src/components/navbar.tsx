@@ -12,16 +12,22 @@ export const Navbar = ()=> {
     }
     const [user] = useAuthState(auth)
     return (    
-        <div className='bg-sky-500/50 h-16 flex-auto items-stretch'>
+        <div className=' bg-sky-900 flex h-20 justify-end'>
             
-            <Link className='bg-white mx-5 rounded px-5 py-5'  to='/'>Home</Link>
-            <Link className='bg-white mx-5 rounded px-5 py-5' to='/login'>Login</Link>
             {user && (<>
-            <div>{user?.displayName || ""}
-                <img className='b' src={user?.photoURL|| ""} alt="" width='50' height='50'/></div>
-                <br />
-            <button onClick={logout}>Log Out</button>
+            <div className='m-2 flex'>
+                
+                <img className='rounded-full h-15' src={user?.photoURL|| ""} alt="" />
+                <p className='m-5 text-white'>{user.displayName || ""}</p>
+                
+            </div>
+            <p className=' bg-white m-5 p-2 rounded cursor-pointer hover:bg-slate-950 hover:text-white' onClick={logout}>Log Out</p>
+            <p className=' bg-white m-5 p-2 rounded cursor-pointer hover:bg-slate-950 hover:text-white' >Create Post</p>
             </>)}
+
+            <Link className='bg-white m-5 p-2 rounded h-10  hover:bg-slate-950 hover:text-white'  to='/'>Home</Link>
+            {!user && (<><Link className='bg-white m-5 p-2 rounded  h-10  hover:bg-slate-950 hover:text-white' to='/login'>Login</Link></>)}
+            
                 
         </div>
 
