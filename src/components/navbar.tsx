@@ -17,16 +17,17 @@ export const Navbar = ()=> {
             {user && (<>
             <div className='m-2 flex'>
                 
-                <img className='rounded-full h-15' src={user?.photoURL|| ""} alt="" />
+                <img className='rounded-full h-15 cursor-pointer' src={user?.photoURL|| ""} alt="" />
                 <p className='m-5 text-white'>{user.displayName || ""}</p>
                 
             </div>
-            <p className=' bg-white m-5 p-2 rounded cursor-pointer hover:bg-slate-950 hover:text-white' onClick={logout}>Log Out</p>
-            <p className=' bg-white m-5 p-2 rounded cursor-pointer hover:bg-slate-950 hover:text-white' >Create Post</p>
+            
+            <Link to='/createpost' className=' bg-white m-5 p-2 rounded cursor-pointer hover:bg-slate-950 hover:text-white' >Create Post</Link>
             </>)}
 
             <Link className='bg-white m-5 p-2 rounded h-10  hover:bg-slate-950 hover:text-white'  to='/'>Home</Link>
             {!user && (<><Link className='bg-white m-5 p-2 rounded  h-10  hover:bg-slate-950 hover:text-white' to='/login'>Login</Link></>)}
+            {user && (<p className=' bg-white m-5 p-2 rounded cursor-pointer hover:bg-slate-950 hover:text-white' onClick={logout}>Log Out</p>)}  
             
                 
         </div>
